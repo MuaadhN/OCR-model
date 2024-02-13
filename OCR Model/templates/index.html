@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Extraction</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyEOI5A5XdK7uAAEl9LMpV5MEr5YOBIaIp" crossorigin="anonymous">
+    <!-- Include Animate.css for animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+    <style>
+        body {
+            padding: 20px;
+            background-color: #343a40;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+            color: #f8f9fa;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            background-color: #495057;
+            margin-top: 20px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #8eff37; /* Light Green */
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 10px;
+            border-radius: 10px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        img:hover {
+            transform: scale(1.1);
+        }
+
+        p.lead {
+            color: #adb5bd;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        form label {
+            color: #90be6d; /* Light Green */
+        }
+
+        .btn-primary {
+            background-color: #f8f9fa; /* Light Gray */
+            border-color: #f8f9fa; /* Light Gray */
+            color: #495057; /* Dark Gray */
+            transition: background-color 0.3s ease-in-out;
+            padding: 10px 20px;
+        }
+
+        .btn-primary:hover {
+            background-color: #e9ecef; /* Light Gray */
+        }
+
+        .container:hover img {
+            transform: scale(1.05);
+        }
+
+        .title-container {
+            text-align: center;
+            margin-bottom: 50px;
+            animation-duration: 1s;
+            animation-fill-mode: both;
+        }
+
+        .title-container h1 {
+            font-size: 3.5em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            animation-name: fadeInDown;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .animate__animated {
+            animation-duration: 1s;
+            animation-fill-mode: both;
+        }
+
+        .animate__fadeIn {
+            animation-name: fadeIn;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="title-container animate__animated animate__fadeIn">
+        <h1>Text Extraction</h1>
+    </div>
+    <div class="container animate__animated animate__fadeIn">
+        <h1>{{ message }}</h1>
+        {% if word %}
+        <p class="lead">Recognized word: {{ word }}</p>
+        {% endif %}
+
+        {% if image_base64 %}
+        <img class="img-fluid" src="data:image/png;base64,{{ image_base64 }}" alt="Processed Image">
+        {% endif %}
+
+        <form method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="file">Choose File:</label>
+                <input type="file" class="form-control-file" name="file" id="file">
+            </div>
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary">Upload</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Include Bootstrap JS and Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-bT9H6zqQpL8D9xC4ZKhDZZ9BQvRyUJIVieRNqMzE81GZFnpq7GduC6cXoPX1pBct"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyEOI5A5XdK7uAAEl9LMpV5MEr5YOBIaIp"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
